@@ -289,7 +289,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pke-Aq-7uq">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pke-Aq-7uq" customClass="MultiAutoCompleteTextField" customModule="MultiAutoCompleteTextSwift">
                                                     <rect key="frame" x="0.0" y="30.5" width="200" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -381,7 +381,7 @@
                     </visualEffectView>
                     <connections>
                         <outlet property="quantity" destination="Js4-4A-eF2" id="Z7x-8m-3IN"/>
-                        <outlet property="titleInput" destination="pke-Aq-7uq" id="2R1-Ks-Zgj"/>
+                        <outlet property="titleInput" destination="pke-Aq-7uq" id="E93-CN-abP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K11-AB-pqA" userLabel="First Responder" sceneMemberID="firstResponder"/>

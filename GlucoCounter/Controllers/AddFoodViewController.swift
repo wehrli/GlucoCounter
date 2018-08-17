@@ -8,14 +8,20 @@
 
 import UIKit
 import CoreData
+import MultiAutoCompleteTextSwift
 
 class AddFoodViewController: UIViewController {
 
-    @IBOutlet weak var titleInput: UITextField!
+    @IBOutlet weak var titleInput: MultiAutoCompleteTextField!
     @IBOutlet weak var quantity: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleInput.maximumAutoCompleteCount = 5
+        titleInput.autoCompleteTableView?.frame.origin.y = 60
+        titleInput.autoCompleteTableView?.frame.origin.x = -100
+        let value = DBManager.sharedInstance.getAllFoodName()
+        titleInput.autoCompleteStrings = value
     }
     
     @IBAction func dismissPopUp(_ sender: UIButton) {

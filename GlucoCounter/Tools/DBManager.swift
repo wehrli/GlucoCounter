@@ -20,6 +20,24 @@ class DBManager {
         context = appDelegate.persistentContainer.viewContext
     }
     
+    public func getAllFoodName() -> [String] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        fetchRequest.propertiesToFetch = ["food_name_fr"]
+        fetchRequest.resultType = NSFetchRequestResultType.dictionaryResultType
+        var elemToReturn = [String]()
+        
+        do {
+            let listOfName = try context.fetch(fetchRequest) as! [[String: String]]
+            for r in listOfName {
+                elemToReturn.append(r["food_name_fr"]!)
+            }
+            return elemToReturn
+        } catch {
+            print("error on fetching all food name")
+        }
+        return []
+    }
+    
     public func fetchRequestor(fetchRequest: NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate) -> [Any] {
         if (predicate != nil) {
             print("je suis null")
