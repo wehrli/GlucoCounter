@@ -2,6 +2,5 @@
 # platform :ios, '9.0'
 
 target 'GlucoCounter' do
-   pod 'CSV.swift', '~> 2.2.1'
-   pod 'MultiAutoCompleteTextSwift'
+  pod 'CSV.swift', '~> 2.2.1'
 end

@@ -21,7 +21,7 @@ class DBManager {
     }
     
     public func getAllFoodName() -> [String] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Food")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RawFood")
         fetchRequest.propertiesToFetch = ["food_name_fr"]
         fetchRequest.resultType = NSFetchRequestResultType.dictionaryResultType
         var elemToReturn = [String]()
@@ -40,7 +40,7 @@ class DBManager {
     
     public func fetchRequestor(fetchRequest: NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate) -> [Any] {
         if (predicate != nil) {
-            print("je suis null")
+            print("je suis pas null")
             fetchRequest.predicate = predicate
         }
         

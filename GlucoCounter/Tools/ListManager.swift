@@ -11,43 +11,94 @@ import CoreData
 
 class ListManager {
     
-    private var favoriteListFood: [FoodList]
-    private var actualListFood: [Food]
+    private var favoriteListFood: [FoodListMO]
+    private var actualListFood: FoodListMO
+    private var actualMainValue: ResultDiabetValues
     
     public init() {
         favoriteListFood = []
-        actualListFood = []
+        actualListFood = FoodListMO(context: DBManager.sharedInstance.getContext())
+        actualListFood.isCurrent = true
+        actualListFood.name = ""
+        actualMainValue = ResultDiabetValues(glucid: 0, kCal: 0, weight: 0)
+        actualListFood.totalkcal = actualMainValue.kCalQuantity
+        actualListFood.totalweight = actualMainValue.totalWeight
+        actualListFood.totalglucidic = actualMainValue.glucidicQuantity
     }
     
-    public func getListFavorite() -> [FoodList] {
-        let foodList = DBManager.sharedInstance.fetchRequestor(fetchRequest: NSFetchRequest<Food>(entityName: "FoodList") as! NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate()) as! [FoodList]
-        
-        print(foodList)
+    public func calculeResultDiabetValues() -> ResultDiabetValues {
+        actualMainValue = ResultDiabetValues(glucid: 0, kCal: 0, weight: 0)
+    
+        for elem in actualListFood.foods?.allObjects as! [FoodItemMO] {
+            actualMainValue.glucidicQuantity = actualMainValue.glucidicQuantity + elem.glucidicQuantity
+            actualMainValue.kCalQuantity = actualMainValue.kCalQuantity + elem.kCalQuantity
+            actualMainValue.totalWeight = actualMainValue.totalWeight + elem.weight
+        }
+        return actualMainValue
+    }
+    
+    public func getListFavorite() -> [FoodListMO] {
+        let foodList = DBManager.sharedInstance.fetchRequestor(fetchRequest: NSFetchRequest<FoodListMO>(entityName: "FoodList") as! NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate()) as! [FoodListMO]
+
         favoriteListFood = foodList
         return foodList
     }
     
-    public func getListFood() -> [Food] {
-        return actualListFood
+    public func getListFood() -> [FoodItemMO] {
+        return actualListFood.foods?.allObjects as! [FoodItemMO]
     }
     
-    public func addFoodToActualList(food: Food) {
-        actualListFood.append(food)
+    public func addFoodToActualList(food: FoodItemMO) {
+        actualListFood.addToFoods(food)
     }
+    
+    public func addFoodListToFavorite(name: String, diabetValues: ResultDiabetValues) {
+        // TODO:
+        let tmpNewList = FoodListMO(context: DBManager.sharedInstance.getContext())
+        tmpNewList.isCurrent = false
+        tmpNewList.name = name
+        tmpNewList.totalglucidic = diabetValues.glucidicQuantity
+        tmpNewList.totalweight = diabetValues.totalWeight
+        tmpNewList.totalkcal = diabetValues.kCalQuantity
+        tmpNewList.foods = actualListFood.foods
+
+        DBManager.sharedInstance.Save()
+    }
+    
+//    public func setFavoriteToActual(foodList: [FoodItem]) {
+//        actualListFood.removeAll()
+//        actualListFood = foodList
+//    }
     
     public func removeFoodToActualList(nameFood: String) {
-        var idx = -1
-        for (index, value) in actualListFood.enumerated() {
-            if (value.food_name_fr == nameFood) {
-                idx = index
-            }
-        }
+//        var idx = -1
+//        for (index, value) in actualListFood.enumerated() {
+//            if (value.title == nameFood) {
+//                idx = index
+//            }
+//        }
+//        
+//        if (idx != -1) {
+//            actualListFood.remove(at: idx)
+//        } else {
+//            print("food is not in the list")
+//        }
         
-        if (idx != -1) {
-            actualListFood.remove(at: idx)
-        } else {
-            print("food is not in the list")
-        }
+    }
+    
+    public func removeFoodToFavoriteList(nameList: String) {
+//        var idx = -1
+//        for (index, value) in favoriteListFood.enumerated() {
+//            if (value.name == nameList) {
+//                idx = index
+//            }
+//        }
+//
+//        if (idx != -1) {
+//            favoriteListFood.remove(at: idx)
+//        } else {
+//            print("food is not in the list")
+//        }
         
     }
     

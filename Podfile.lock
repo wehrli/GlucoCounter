@@ -1,20 +1,16 @@
 PODS:
   - CSV.swift (2.2.1)
-  - MultiAutoCompleteTextSwift (0.1.1)
 
 DEPENDENCIES:
   - CSV.swift (~> 2.2.1)
-  - MultiAutoCompleteTextSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CSV.swift
-    - MultiAutoCompleteTextSwift
 
 SPEC CHECKSUMS:
   CSV.swift: 5bf3338aff82371cb51cc6dc559d7b45a74bab14
-  MultiAutoCompleteTextSwift: d5631e77b48413af5795e14a1ae6d72054fe2d1e
 
-PODFILE CHECKSUM: 75b48395a8f04f619765f02bd4a970fcf8739f55
+PODFILE CHECKSUM: d00e65cbd521bcc4283f373172c7067f3df0c90f
 
 COCOAPODS: 1.5.3

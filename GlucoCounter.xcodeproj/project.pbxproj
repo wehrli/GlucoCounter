@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19AE7F22E31D346C144DE205 /* libPods-GlucoCounter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE3A8D1FA2CC70F23746895 /* libPods-GlucoCounter.a */; };
 		2F2CE6B720D4F8FA009C8642 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2CE6B620D4F8FA009C8642 /* UITextField+Extensions.swift */; };
 		2F3AD66A1FC36A6B00334C3B /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3AD6691FC36A6B00334C3B /* ItemTableViewCell.swift */; };
 		2F3AD66C1FC3760E00334C3B /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3AD66B1FC3760E00334C3B /* AddFoodView.swift */; };
@@ -19,11 +20,16 @@
 		2F84D7521F5C42070006475C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F84D7501F5C42070006475C /* LaunchScreen.storyboard */; };
 		2F84D75D1F5C42070006475C /* GlucoCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84D75C1F5C42070006475C /* GlucoCounterTests.swift */; };
 		8F02694E2114757800B7FD65 /* ListePlat2017.csv in Resources */ = {isa = PBXBuildFile; fileRef = 8F02694D2114757800B7FD65 /* ListePlat2017.csv */; };
+		8F39E74521285A5B003802C1 /* ResultDiabetValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F39E74421285A5B003802C1 /* ResultDiabetValues.swift */; };
+		8F39E74721288CBC003802C1 /* FavoritesMenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F39E74621288CBC003802C1 /* FavoritesMenusViewController.swift */; };
+		8F39E749212896BA003802C1 /* AddListToFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F39E748212896BA003802C1 /* AddListToFavoriteViewController.swift */; };
 		8FC81F0521219B4F00D6ACFB /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC81F0421219B4F00D6ACFB /* ListManager.swift */; };
+		8FE06B79215C053000E56675 /* FoodItemMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE06B77215C053000E56675 /* FoodItemMO+CoreDataClass.swift */; };
+		8FE06B7A215C053000E56675 /* FoodItemMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE06B78215C053000E56675 /* FoodItemMO+CoreDataProperties.swift */; };
+		8FE06B7D215C054200E56675 /* FoodListMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE06B7B215C054200E56675 /* FoodListMO+CoreDataClass.swift */; };
+		8FE06B7E215C054200E56675 /* FoodListMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE06B7C215C054200E56675 /* FoodListMO+CoreDataProperties.swift */; };
 		8FFFA6152118D341002C077D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFFA6142118D341002C077D /* DBManager.swift */; };
 		8FFFA6172118E353002C077D /* ACManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFFA6162118E353002C077D /* ACManager.swift */; };
-		8FFFA6192119BDFF002C077D /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFFA6182119BDFF002C077D /* FoodItem.swift */; };
-		EA2A0417DC969052F9D7CA64 /* libPods-GlucoCounter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99459D501668349765CA3954 /* libPods-GlucoCounter.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		117031E52DEA4405A1E9C7EF /* Pods-GlucoCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlucoCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlucoCounter/Pods-GlucoCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		2EE3A8D1FA2CC70F23746895 /* libPods-GlucoCounter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GlucoCounter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2CE6B620D4F8FA009C8642 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		2F3AD6691FC36A6B00334C3B /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		2F3AD66B1FC3760E00334C3B /* AddFoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
@@ -52,14 +60,18 @@
 		2F84D7581F5C42070006475C /* GlucoCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlucoCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F84D75C1F5C42070006475C /* GlucoCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoCounterTests.swift; sourceTree = "<group>"; };
 		2F84D75E1F5C42070006475C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		523A68F4C0A18816E350D974 /* Pods-GlucoCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlucoCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlucoCounter/Pods-GlucoCounter.debug.xcconfig"; sourceTree = "<group>"; };
-		6C049DD7E693A27588913710 /* Pods-GlucoCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlucoCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlucoCounter/Pods-GlucoCounter.release.xcconfig"; sourceTree = "<group>"; };
+		7ABDFB5CBB61918AC95B60C9 /* Pods-GlucoCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlucoCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlucoCounter/Pods-GlucoCounter.release.xcconfig"; sourceTree = "<group>"; };
 		8F02694D2114757800B7FD65 /* ListePlat2017.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ListePlat2017.csv; sourceTree = "<group>"; };
+		8F39E74421285A5B003802C1 /* ResultDiabetValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDiabetValues.swift; sourceTree = "<group>"; };
+		8F39E74621288CBC003802C1 /* FavoritesMenusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMenusViewController.swift; sourceTree = "<group>"; };
+		8F39E748212896BA003802C1 /* AddListToFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListToFavoriteViewController.swift; sourceTree = "<group>"; };
 		8FC81F0421219B4F00D6ACFB /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		8FE06B77215C053000E56675 /* FoodItemMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodItemMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8FE06B78215C053000E56675 /* FoodItemMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodItemMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8FE06B7B215C054200E56675 /* FoodListMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodListMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8FE06B7C215C054200E56675 /* FoodListMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodListMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8FFFA6142118D341002C077D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		8FFFA6162118E353002C077D /* ACManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACManager.swift; sourceTree = "<group>"; };
-		8FFFA6182119BDFF002C077D /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
-		99459D501668349765CA3954 /* libPods-GlucoCounter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GlucoCounter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA2A0417DC969052F9D7CA64 /* libPods-GlucoCounter.a in Frameworks */,
+				19AE7F22E31D346C144DE205 /* libPods-GlucoCounter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E3F60FAD57FCE51F0B4E691 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				117031E52DEA4405A1E9C7EF /* Pods-GlucoCounter.debug.xcconfig */,
+				7ABDFB5CBB61918AC95B60C9 /* Pods-GlucoCounter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2F2CE6B520D4F872009C8642 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,8 +117,8 @@
 				2F84D7431F5C42070006475C /* GlucoCounter */,
 				2F84D75B1F5C42070006475C /* GlucoCounterTests */,
 				2F84D7421F5C42070006475C /* Products */,
-				65692626C219FAB5191CF85A /* Pods */,
-				C384D37AC1E6E9D3659C2EFA /* Frameworks */,
+				2E3F60FAD57FCE51F0B4E691 /* Pods */,
+				569E57487F65EE3F2AFAA62F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,13 +156,12 @@
 			path = GlucoCounterTests;
 			sourceTree = "<group>";
 		};
-		65692626C219FAB5191CF85A /* Pods */ = {
+		569E57487F65EE3F2AFAA62F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				523A68F4C0A18816E350D974 /* Pods-GlucoCounter.debug.xcconfig */,
-				6C049DD7E693A27588913710 /* Pods-GlucoCounter.release.xcconfig */,
+				2EE3A8D1FA2CC70F23746895 /* libPods-GlucoCounter.a */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8F02694C2114754B00B7FD65 /* Ressources */ = {
@@ -168,6 +188,8 @@
 			children = (
 				2F52BE4C1FC37A920072A7CA /* AddFoodViewController.swift */,
 				2F84D7461F5C42070006475C /* CurrentMenuViewController.swift */,
+				8F39E74621288CBC003802C1 /* FavoritesMenusViewController.swift */,
+				8F39E748212896BA003802C1 /* AddListToFavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -175,7 +197,11 @@
 		8FFFA6122118CC7B002C077D /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				8FFFA6182119BDFF002C077D /* FoodItem.swift */,
+				8FE06B7B215C054200E56675 /* FoodListMO+CoreDataClass.swift */,
+				8FE06B7C215C054200E56675 /* FoodListMO+CoreDataProperties.swift */,
+				8FE06B77215C053000E56675 /* FoodItemMO+CoreDataClass.swift */,
+				8FE06B78215C053000E56675 /* FoodItemMO+CoreDataProperties.swift */,
+				8F39E74421285A5B003802C1 /* ResultDiabetValues.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -190,14 +216,6 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		C384D37AC1E6E9D3659C2EFA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				99459D501668349765CA3954 /* libPods-GlucoCounter.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,7 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F84D7611F5C42070006475C /* Build configuration list for PBXNativeTarget "GlucoCounter" */;
 			buildPhases = (
-				C9F6F62FFCD0246C18C2663D /* [CP] Check Pods Manifest.lock */,
+				D19F717151359B67840EB010 /* [CP] Check Pods Manifest.lock */,
 				2F84D73D1F5C42070006475C /* Sources */,
 				2F84D73E1F5C42070006475C /* Frameworks */,
 				2F84D73F1F5C42070006475C /* Resources */,
@@ -301,7 +319,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C9F6F62FFCD0246C18C2663D /* [CP] Check Pods Manifest.lock */ = {
+		D19F717151359B67840EB010 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,13 +344,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FE06B7A215C053000E56675 /* FoodItemMO+CoreDataProperties.swift in Sources */,
+				8FE06B7D215C054200E56675 /* FoodListMO+CoreDataClass.swift in Sources */,
+				8FE06B7E215C054200E56675 /* FoodListMO+CoreDataProperties.swift in Sources */,
+				8FE06B79215C053000E56675 /* FoodItemMO+CoreDataClass.swift in Sources */,
 				2F2CE6B720D4F8FA009C8642 /* UITextField+Extensions.swift in Sources */,
+				8F39E749212896BA003802C1 /* AddListToFavoriteViewController.swift in Sources */,
 				2F3AD66C1FC3760E00334C3B /* AddFoodView.swift in Sources */,
 				2F3AD66A1FC36A6B00334C3B /* ItemTableViewCell.swift in Sources */,
+				8F39E74721288CBC003802C1 /* FavoritesMenusViewController.swift in Sources */,
 				8FFFA6172118E353002C077D /* ACManager.swift in Sources */,
-				8FFFA6192119BDFF002C077D /* FoodItem.swift in Sources */,
 				8FFFA6152118D341002C077D /* DBManager.swift in Sources */,
 				2F84D7471F5C42070006475C /* CurrentMenuViewController.swift in Sources */,
+				8F39E74521285A5B003802C1 /* ResultDiabetValues.swift in Sources */,
 				2F84D7451F5C42070006475C /* AppDelegate.swift in Sources */,
 				8FC81F0521219B4F00D6ACFB /* ListManager.swift in Sources */,
 				2F52BE4D1FC37A920072A7CA /* AddFoodViewController.swift in Sources */,
@@ -491,7 +515,7 @@
 		};
 		2F84D7621F5C42070006475C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 523A68F4C0A18816E350D974 /* Pods-GlucoCounter.debug.xcconfig */;
+			baseConfigurationReference = 117031E52DEA4405A1E9C7EF /* Pods-GlucoCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D8H2B6F94P;
@@ -506,7 +530,7 @@
 		};
 		2F84D7631F5C42070006475C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C049DD7E693A27588913710 /* Pods-GlucoCounter.release.xcconfig */;
+			baseConfigurationReference = 7ABDFB5CBB61918AC95B60C9 /* Pods-GlucoCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D8H2B6F94P;

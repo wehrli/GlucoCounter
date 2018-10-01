@@ -8,20 +8,17 @@
 
 import UIKit
 import CoreData
-import MultiAutoCompleteTextSwift
 
 class AddFoodViewController: UIViewController {
 
-    @IBOutlet weak var titleInput: MultiAutoCompleteTextField!
+    @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var quantity: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleInput.maximumAutoCompleteCount = 5
-        titleInput.autoCompleteTableView?.frame.origin.y = 60
-        titleInput.autoCompleteTableView?.frame.origin.x = -100
-        let value = DBManager.sharedInstance.getAllFoodName()
-        titleInput.autoCompleteStrings = value
+
+        //let value = DBManager.sharedInstance.getAllFoodName()
+        
     }
     
     @IBAction func dismissPopUp(_ sender: UIButton) {
@@ -30,9 +27,58 @@ class AddFoodViewController: UIViewController {
     
     @IBAction func addFollow(_ sender: UIButton) {
 
-        var value = DBManager.sharedInstance.fetchRequestor(fetchRequest: NSFetchRequest<Food>(entityName: "Food") as! NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate(format: "food_name_fr == %@", titleInput.text!)) as! [Food]
+        //print(titleInput.text?.trimmingCharacters(in: .whitespacesAndNewlines))
         
-        ListManager.sharedInstance.addFoodToActualList(food: value[0])
+       // get all information about the food selected
+        var value = DBManager.sharedInstance.fetchRequestor(fetchRequest: NSFetchRequest<RawFood>(entityName: "RawFood") as! NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate(format: "food_name_fr == %@", titleInput.text!.trimmingCharacters(in: .whitespacesAndNewlines))) as! [RawFood]
+        
+
+        if (value == [])
+        {
+            let myAlertController: UIAlertController = UIAlertController(title: "Hey..!", message: "No food found", preferredStyle: .alert)
+
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+                //Do some stuff
+
+
+            }
+            myAlertController.addAction(cancelAction)
+
+            self.present(myAlertController, animated: true, completion: nil)
+
+            print("no food founded for that selection")
+            return
+        }
+        
+        let numberFormatter = NumberFormatter()
+        
+        // Weight string to Float
+        let quantityChooseByUser = numberFormatter.number(from: quantity.text!)?.floatValue
+        
+        // Get food composant string to format into Float, from RawFood
+        let carbohydrateForCentGrams = numberFormatter.number(from: value[0].carbohydrate!)?.floatValue
+        let fiberForCentGrams = numberFormatter.number(from: value[0].fibres!)?.floatValue
+        let kcalForCentGrams = numberFormatter.number(from: value[0].kcal!)?.floatValue
+        
+        //calcul glucidique (
+        let carbohydrate = (quantityChooseByUser! * carbohydrateForCentGrams!) / 100
+        let fiber = (quantityChooseByUser! * fiberForCentGrams!) / 100
+        let glucides = carbohydrate - fiber
+        
+        //calcul kCal
+        let kCal = (quantityChooseByUser! * kcalForCentGrams!) / 100
+        
+        
+        let itemToAdd = FoodItemMO(context: DBManager.sharedInstance.getContext())
+        itemToAdd.name = titleInput.text
+        itemToAdd.glucidicQuantity = glucides
+        itemToAdd.kCalQuantity = kCal
+        itemToAdd.weight = quantityChooseByUser!
+        
+            
+            
+            //FoodItem(title: value[0].food_name_fr!, quantity: quantityChooseByUser!, glucide: glucides, kcal: kCal)
+        ListManager.sharedInstance.addFoodToActualList(food: itemToAdd)
         
         dismiss(animated: true, completion: nil)
     }

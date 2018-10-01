@@ -9,20 +9,34 @@
 import UIKit
 import CoreData
 
+// TODO: get name of the favorist list food if come from favorite pages
+
 class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    private var items = [FoodItem]()
+    private var items : [FoodItemMO]!
     private let dbManager = DBManager()
     @IBOutlet weak var tableViewObject: UITableView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    
+    @IBOutlet weak var glucidicTotalDisplay: UILabel!
+    @IBOutlet weak var kcalTotalDisplay: UILabel!
+    @IBOutlet weak var weightTotalDisplay: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        items = []
         
         // This allow the pull to refresh event
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableViewObject.refreshControl = refreshControl
         
+        // Add target on addToFavorite button
+        favoriteButton.addTarget(self, action: #selector(putToFavorite), for: .touchUpInside)
+        
+        //get all food from last used (current or fav)
         self.getItemFromDb()
     }
 
@@ -47,10 +61,12 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
         let itm = items[indexPath.row]
         
         
-        cell.itemTitle.text = itm.title
-        cell.itemValues.text = "Quantité: " + String(itm.quantity) + "Glucides: " + String(itm.glucide)
-        cell.itemTotal.text = String(itm.total)
+        cell.itemTitle.text = itm.name
         
+        cell.itemValues.text = "KCal: " + String(itm.kCalQuantity)
+                                + " Glucides: " + String(itm.glucidicQuantity)
+        
+        cell.itemTotal.text = "Poids: " + String(itm.weight)
         
         return cell
     }
@@ -59,15 +75,29 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
         return true
     }
     
+    // willDisplay function
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastRowIndex = tableView.numberOfRows(inSection: 0)
+        if indexPath.row == lastRowIndex - 1 {
+            let tmp = ListManager.sharedInstance.calculeResultDiabetValues()
+            print(tmp)
+            
+            //valeur en dur a modifié
+            glucidicTotalDisplay.text = "Apport glucidique total : " + tmp.glucidicQuantity.description
+            kcalTotalDisplay.text = "Apport caloriques total : " + tmp.kCalQuantity.description
+            weightTotalDisplay.text = "Poids Total : " + tmp.totalWeight.description
+        }
+    }
+    
     /*
      ** give action for editing, deleting a cell view
      */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            ListManager.sharedInstance.removeFoodToActualList(nameFood: items[indexPath.row].title)
-            self.getItemFromDb()
-            tableViewObject.reloadData()
+            //ListManager.sharedInstance.removeFoodToActualList(nameFood: items[indexPath.row].title)
+            //self.getItemFromDb()
+            //tableViewObject.reloadData()
         }
  
     }
@@ -93,20 +123,17 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     func getItemFromDb() {
         items.removeAll()
-        let actualList = ListManager.sharedInstance.getListFood()
-        actualList.forEach() {food in
-            let formatter = NumberFormatter()
-            formatter.decimalSeparator = ","
-            let fat = formatter.number(from: food.fat!)
-            
-            items.append(FoodItem(title: food.food_name_fr!, quantity: 150, glucide: fat as! Double, total: 30))
-        }
+        items = ListManager.sharedInstance.getListFood()
     }
     
     func refreshTable(refreshControl: UIRefreshControl) {
         getItemFromDb()
         tableViewObject.reloadData()
         refreshControl.endRefreshing()
+    }
+    
+    func putToFavorite() {
+        
     }
 }
 

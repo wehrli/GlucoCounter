@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Favorites Menus View Controller-->
         <scene sceneID="jEc-Sq-ha8">
             <objects>
-                <viewController id="xCA-Qs-uGr" sceneMemberID="viewController">
+                <viewController id="xCA-Qs-uGr" customClass="FavoritesMenusViewController" customModule="GlucoCounter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y2h-Zg-nvW"/>
                         <viewControllerLayoutGuide type="bottom" id="OLe-Ne-IYo"/>
@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="102" id="DbK-7c-wEI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="102" id="DbK-7c-wEI" customClass="ItemTableViewCell" customModule="GlucoCounter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DbK-7c-wEI" id="Ztt-Hp-SUF">
@@ -71,10 +71,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" systemItem="favorites" id="2QT-Fj-nat"/>
+                    <connections>
+                        <outlet property="tableView" destination="PoU-of-fvG" id="VcB-iJ-vMv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdR-lX-Bk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514.39999999999998" y="435.83208395802103"/>
+            <point key="canvasLocation" x="513" y="471"/>
         </scene>
         <!--Votre menus-->
         <scene sceneID="zvt-PS-Qh0">
@@ -92,7 +95,6 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="GlucoCounter" id="Sxj-q5-pFn">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="cdh-fk-whT"/>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8FO-60-dZq">
                                             <connections>
                                                 <segue destination="fdV-SL-eYp" kind="presentation" id="Z5X-6h-NDW"/>
@@ -196,6 +198,9 @@
                                         <state key="normal" image="Heart">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="QVK-P0-U5r" kind="presentation" id="1NR-Px-gUC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.025582598519999999" green="0.54645949599999999" blue="0.52757734060000006" alpha="0.59709087171052633" colorSpace="custom" customColorSpace="sRGB"/>
@@ -235,7 +240,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Votre menus" id="Xv7-dQ-LmP"/>
                     <connections>
+                        <outlet property="favoriteButton" destination="RqH-ZN-T4R" id="gtA-XQ-4WJ"/>
+                        <outlet property="glucidicTotalDisplay" destination="fax-c7-exr" id="ck3-2h-NLL"/>
+                        <outlet property="kcalTotalDisplay" destination="z0V-tm-oPc" id="FaQ-ua-gCt"/>
                         <outlet property="tableViewObject" destination="xgh-k8-cdT" id="hzA-9j-Psi"/>
+                        <outlet property="weightTotalDisplay" destination="aY3-8k-slI" id="Cm5-Yy-VJu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koN-cr-Ray" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,9 +282,6 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-aW-d8F">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    <connections>
-                                        <action selector="dismissPopUp:" destination="fdV-SL-eYp" eventType="touchUpInside" id="vj7-yt-n6T"/>
-                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-bH-xj9" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
                                     <rect key="frame" x="67" y="213" width="240" height="240"/>
@@ -302,7 +308,7 @@
                                                     <rect key="frame" x="0.0" y="70.5" width="200" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8z-Tf-C79">
                                                     <rect key="frame" x="0.0" y="110.5" width="200" height="30"/>
@@ -386,7 +392,253 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K11-AB-pqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="-219"/>
+            <point key="canvasLocation" x="1327" y="-567"/>
+        </scene>
+        <!--Add Food View Controller-->
+        <scene sceneID="0mI-oz-Bfj">
+            <objects>
+                <viewController id="YnV-Ly-Xkf" customClass="AddFoodViewController" customModule="GlucoCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="sAj-H0-riy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ioV-N3-AxO">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VjP-cK-gvX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <connections>
+                                        <action selector="dismissPopUp:" destination="YnV-Ly-Xkf" eventType="touchUpInside" id="naK-lI-Hhu"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wo-aL-dsq" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
+                                    <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JOw-uU-0wx">
+                                            <rect key="frame" x="20" y="50" width="200" height="180.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajouter un aliment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYe-FW-4vY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uR1-Rp-J4z" customClass="MultiAutoCompleteTextField" customModule="MultiAutoCompleteTextSwift">
+                                                    <rect key="frame" x="0.0" y="30.5" width="200" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantité" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKp-3R-kkq">
+                                                    <rect key="frame" x="0.0" y="70.5" width="200" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrM-4m-LD1">
+                                                    <rect key="frame" x="0.0" y="110.5" width="200" height="30"/>
+                                                    <color key="backgroundColor" red="0.023098140989999998" green="0.61315438519999999" blue="0.59642280339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Ajouter">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addFollow:" destination="YnV-Ly-Xkf" eventType="touchUpInside" id="wzR-Eq-NbG"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnM-r9-mEJ">
+                                                    <rect key="frame" x="0.0" y="150.5" width="200" height="30"/>
+                                                    <color key="backgroundColor" red="0.023098140989999998" green="0.61315438519999999" blue="0.59642280339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Annuler">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="dismissFromButton:" destination="YnV-Ly-Xkf" eventType="touchUpInside" id="vdA-d5-c2W"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.025582598519999999" green="0.54645949599999999" blue="0.52757734060000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="240" id="0T4-j8-zXt"/>
+                                        <constraint firstItem="JOw-uU-0wx" firstAttribute="centerY" secondItem="7wo-aL-dsq" secondAttribute="centerY" constant="20" id="6jT-X5-kqW"/>
+                                        <constraint firstAttribute="trailing" secondItem="JOw-uU-0wx" secondAttribute="trailing" constant="20" id="S1Z-Zx-zvq"/>
+                                        <constraint firstItem="JOw-uU-0wx" firstAttribute="leading" secondItem="7wo-aL-dsq" secondAttribute="leading" constant="20" id="Xvx-Z0-TLy"/>
+                                        <constraint firstAttribute="height" constant="240" id="dVJ-UB-QFT"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="30"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtQ-HO-laf" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
+                                    <rect key="frame" x="137" y="165" width="100" height="100"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="KsY-ny-Q27">
+                                            <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="MhK-Wg-oOf"/>
+                                                <constraint firstAttribute="height" constant="60" id="S4v-zS-JM4"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.025582598519999999" green="0.54645949599999999" blue="0.52757734060000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="KsY-ny-Q27" firstAttribute="centerX" secondItem="MtQ-HO-laf" secondAttribute="centerX" id="31L-MO-FNa"/>
+                                        <constraint firstAttribute="height" constant="100" id="SPe-n5-qMU"/>
+                                        <constraint firstItem="KsY-ny-Q27" firstAttribute="centerY" secondItem="MtQ-HO-laf" secondAttribute="centerY" id="X2z-nJ-NOS"/>
+                                        <constraint firstAttribute="width" constant="100" id="Z4g-8L-k99"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="50"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="VjP-cK-gvX" secondAttribute="bottom" id="45j-ct-knH"/>
+                                <constraint firstAttribute="trailing" secondItem="VjP-cK-gvX" secondAttribute="trailing" id="8za-Mp-aP7"/>
+                                <constraint firstItem="7wo-aL-dsq" firstAttribute="centerX" secondItem="ioV-N3-AxO" secondAttribute="centerX" id="ABA-Kt-MFx"/>
+                                <constraint firstItem="VjP-cK-gvX" firstAttribute="top" secondItem="ioV-N3-AxO" secondAttribute="top" id="CxW-Wy-q4s"/>
+                                <constraint firstItem="7wo-aL-dsq" firstAttribute="top" secondItem="MtQ-HO-laf" secondAttribute="bottom" constant="-52" id="GNB-PN-jSb"/>
+                                <constraint firstItem="7wo-aL-dsq" firstAttribute="centerY" secondItem="ioV-N3-AxO" secondAttribute="centerY" id="JYf-4q-ltl"/>
+                                <constraint firstItem="VjP-cK-gvX" firstAttribute="leading" secondItem="ioV-N3-AxO" secondAttribute="leading" id="oBj-Lh-7i5"/>
+                                <constraint firstItem="MtQ-HO-laf" firstAttribute="centerX" secondItem="ioV-N3-AxO" secondAttribute="centerX" id="uL9-L6-AJP"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <connections>
+                        <outlet property="quantity" destination="OKp-3R-kkq" id="GXc-1A-HBV"/>
+                        <outlet property="titleInput" destination="uR1-Rp-J4z" id="bFp-Rg-hcr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aty-Gs-Iye" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1327" y="-567"/>
+        </scene>
+        <!--Add List To Favorite View Controller-->
+        <scene sceneID="GYa-aX-8yV">
+            <objects>
+                <viewController id="QVK-P0-U5r" customClass="AddListToFavoriteViewController" customModule="GlucoCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="Igt-bS-ejB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="p47-gZ-YCb">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elo-eC-ZGt">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELB-nE-Bul" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
+                                    <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LBI-qY-lwh">
+                                            <rect key="frame" x="20" y="70" width="200" height="140.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choisissez un nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2d-2S-ER2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0h8-ws-HtA" customClass="MultiAutoCompleteTextField" customModule="MultiAutoCompleteTextSwift">
+                                                    <rect key="frame" x="0.0" y="30.5" width="200" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mc-6k-5nt">
+                                                    <rect key="frame" x="0.0" y="70.5" width="200" height="30"/>
+                                                    <color key="backgroundColor" red="0.023098140989999998" green="0.61315438519999999" blue="0.59642280339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Ajouter">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addListToFavorite:" destination="QVK-P0-U5r" eventType="touchUpInside" id="Zz8-Ws-f7q"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frl-Qx-TVZ">
+                                                    <rect key="frame" x="0.0" y="110.5" width="200" height="30"/>
+                                                    <color key="backgroundColor" red="0.023098140989999998" green="0.61315438519999999" blue="0.59642280339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Annuler">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="dismissPopUp:" destination="QVK-P0-U5r" eventType="touchUpInside" id="tAl-dm-HCr"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.025582598519999999" green="0.54645949599999999" blue="0.52757734060000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="LBI-qY-lwh" firstAttribute="centerY" secondItem="ELB-nE-Bul" secondAttribute="centerY" constant="20" id="IsW-p2-ytE"/>
+                                        <constraint firstAttribute="width" constant="240" id="SgZ-D3-Wnx"/>
+                                        <constraint firstAttribute="height" constant="240" id="Wo7-yD-0mr"/>
+                                        <constraint firstAttribute="trailing" secondItem="LBI-qY-lwh" secondAttribute="trailing" constant="20" id="hbX-Sg-VEx"/>
+                                        <constraint firstItem="LBI-qY-lwh" firstAttribute="leading" secondItem="ELB-nE-Bul" secondAttribute="leading" constant="20" id="vak-1x-1hs"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="30"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kse-KP-3Y4" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
+                                    <rect key="frame" x="137" y="165" width="100" height="100"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="cME-5O-bEp">
+                                            <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="tZc-xA-ONZ"/>
+                                                <constraint firstAttribute="height" constant="60" id="xYS-LW-QUJ"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.025582598519999999" green="0.54645949599999999" blue="0.52757734060000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="cME-5O-bEp" firstAttribute="centerY" secondItem="kse-KP-3Y4" secondAttribute="centerY" id="0dw-bB-8mr"/>
+                                        <constraint firstAttribute="width" constant="100" id="DOD-Vh-Lux"/>
+                                        <constraint firstItem="cME-5O-bEp" firstAttribute="centerX" secondItem="kse-KP-3Y4" secondAttribute="centerX" id="IrL-Pw-VRW"/>
+                                        <constraint firstAttribute="height" constant="100" id="baM-Ak-ZGt"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="50"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="elo-eC-ZGt" secondAttribute="trailing" id="0sI-nb-a2w"/>
+                                <constraint firstItem="ELB-nE-Bul" firstAttribute="centerX" secondItem="p47-gZ-YCb" secondAttribute="centerX" id="1dH-tt-jGR"/>
+                                <constraint firstItem="kse-KP-3Y4" firstAttribute="centerX" secondItem="p47-gZ-YCb" secondAttribute="centerX" id="4YZ-Ab-rZ0"/>
+                                <constraint firstItem="ELB-nE-Bul" firstAttribute="top" secondItem="kse-KP-3Y4" secondAttribute="bottom" constant="-52" id="JoY-n1-ZWz"/>
+                                <constraint firstItem="ELB-nE-Bul" firstAttribute="centerY" secondItem="p47-gZ-YCb" secondAttribute="centerY" id="O6g-SB-Vcl"/>
+                                <constraint firstItem="elo-eC-ZGt" firstAttribute="top" secondItem="p47-gZ-YCb" secondAttribute="top" id="hId-j7-omw"/>
+                                <constraint firstItem="elo-eC-ZGt" firstAttribute="leading" secondItem="p47-gZ-YCb" secondAttribute="leading" id="j0W-lS-UDX"/>
+                                <constraint firstAttribute="bottom" secondItem="elo-eC-ZGt" secondAttribute="bottom" id="v8r-Nh-FeL"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <connections>
+                        <outlet property="nameOfTheList" destination="0h8-ws-HtA" id="bkL-wc-7FQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XwK-E1-hch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1326" y="145"/>
         </scene>
     </scenes>
     <resources>
