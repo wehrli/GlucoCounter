@@ -26,6 +26,11 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        /*
+        ** procedure of erasing value into core data (only FoodList)
+        */
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodList")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
@@ -34,6 +39,10 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
         } catch let error as NSError {
             // TODO: handle the error
         }
+        
+        /*
+        ** End of procedure
+        */
         
         items = []
         
