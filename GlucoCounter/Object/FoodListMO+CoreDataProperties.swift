@@ -18,7 +18,7 @@ extension FoodListMO {
     }
 
     @NSManaged public var isCurrent: Bool
-    @NSManaged public var name: String?
+    @NSManaged public var name: String!
     @NSManaged public var totalglucidic: Float
     @NSManaged public var totalkcal: Float
     @NSManaged public var totalweight: Float

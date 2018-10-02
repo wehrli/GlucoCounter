@@ -26,6 +26,15 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodList")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try DBManager.sharedInstance.getContext().execute(deleteRequest)
+        } catch let error as NSError {
+            // TODO: handle the error
+        }
+        
         items = []
         
         // This allow the pull to refresh event
@@ -34,7 +43,7 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
         tableViewObject.refreshControl = refreshControl
         
         // Add target on addToFavorite button
-        favoriteButton.addTarget(self, action: #selector(putToFavorite), for: .touchUpInside)
+//        favoriteButton.addTarget(self, action: #selector(putToFavorite), for: .touchUpInside)
         
         //get all food from last used (current or fav)
         self.getItemFromDb()
@@ -56,11 +65,11 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
      ** Set a cell view
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! ItemTableViewCell
+        let cell: ItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FoodItem", for: indexPath) as! ItemTableViewCell
         
         let itm = items[indexPath.row]
         
-        
+        print(itm.name)
         cell.itemTitle.text = itm.name
         
         cell.itemValues.text = "KCal: " + String(itm.kCalQuantity)

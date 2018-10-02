@@ -38,10 +38,22 @@ class ListManager {
     }
     
     public func getListFavorite() -> [FoodListMO] {
-        let foodList = DBManager.sharedInstance.fetchRequestor(fetchRequest: NSFetchRequest<FoodListMO>(entityName: "FoodList") as! NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate()) as! [FoodListMO]
-
-        favoriteListFood = foodList
-        return foodList
+        
+        // Creation fetchRequestor and add some filter
+        let fetchRequestor = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodList")
+        fetchRequestor.predicate = NSPredicate(format: "isCurrent == %@", "0")
+        
+        //execution of the request
+        do {
+            favoriteListFood = try DBManager.sharedInstance.getContext().fetch(fetchRequestor) as! [FoodListMO]
+            
+        } catch {
+            fatalError("Failed to fetch Favorite list: \(error)")
+        }
+        print("------------------------------------------")
+        print(favoriteListFood)
+        print("------------------------------------------")
+        return favoriteListFood
     }
     
     public func getListFood() -> [FoodItemMO] {

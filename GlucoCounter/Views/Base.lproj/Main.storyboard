@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s5z-Cr-heL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s5z-Cr-heL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,12 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PoU-of-fvG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PoU-of-fvG">
                                 <rect key="frame" x="0.0" y="72" width="375" height="546"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="102" id="DbK-7c-wEI" customClass="ItemTableViewCell" customModule="GlucoCounter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListItem" rowHeight="102" id="DbK-7c-wEI" customClass="ItemTableViewCell" customModule="GlucoCounter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DbK-7c-wEI" id="Ztt-Hp-SUF">
@@ -57,8 +56,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemTitle" destination="QiI-Ft-ViR" id="M7v-t1-cyg"/>
+                                            <outlet property="itemTotal" destination="qFL-qw-XjH" id="q2r-mN-13D"/>
+                                            <outlet property="itemValues" destination="ssP-Wp-7K9" id="7rd-h2-oPn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xCA-Qs-uGr" id="GMj-vB-rBb"/>
+                                    <outlet property="delegate" destination="xCA-Qs-uGr" id="D0o-l2-Aul"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-H3-z6N">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -107,7 +115,7 @@
                                 <rect key="frame" x="16" y="269" width="343" height="349"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Item" rowHeight="102" id="zOB-VR-BId" customClass="ItemTableViewCell" customModule="GlucoCounter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodItem" rowHeight="102" id="zOB-VR-BId" customClass="ItemTableViewCell" customModule="GlucoCounter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zOB-VR-BId" id="XAu-jQ-BJB">
@@ -194,7 +202,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqH-ZN-T4R">
-                                        <rect key="frame" x="146" y="119" width="50" height="50"/>
+                                        <rect key="frame" x="146.5" y="119" width="50" height="50"/>
                                         <state key="normal" image="Heart">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -284,7 +292,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-bH-xj9" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
-                                    <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                    <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qr2-65-Rys">
                                             <rect key="frame" x="20" y="50" width="200" height="180.5"/>
@@ -348,7 +356,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMw-TW-mF2" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
-                                    <rect key="frame" x="137" y="165" width="100" height="100"/>
+                                    <rect key="frame" x="137.5" y="165.5" width="100" height="100"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="SHU-hF-Xvs">
                                             <rect key="frame" x="20" y="20" width="60" height="60"/>
@@ -412,7 +420,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wo-aL-dsq" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
-                                    <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                    <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JOw-uU-0wx">
                                             <rect key="frame" x="20" y="50" width="200" height="180.5"/>
@@ -476,7 +484,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtQ-HO-laf" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
-                                    <rect key="frame" x="137" y="165" width="100" height="100"/>
+                                    <rect key="frame" x="137.5" y="165.5" width="100" height="100"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="KsY-ny-Q27">
                                             <rect key="frame" x="20" y="20" width="60" height="60"/>
@@ -537,7 +545,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELB-nE-Bul" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
-                                    <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                    <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LBI-qY-lwh">
                                             <rect key="frame" x="20" y="70" width="200" height="140.5"/>
@@ -595,7 +603,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kse-KP-3Y4" customClass="AddFoodView" customModule="GlucoCounter" customModuleProvider="target">
-                                    <rect key="frame" x="137" y="165" width="100" height="100"/>
+                                    <rect key="frame" x="137.5" y="165.5" width="100" height="100"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="cME-5O-bEp">
                                             <rect key="frame" x="20" y="20" width="60" height="60"/>

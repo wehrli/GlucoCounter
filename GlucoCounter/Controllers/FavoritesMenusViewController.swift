@@ -15,8 +15,14 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         listFood = []
+        
+        // This allow the pull to refresh event
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
+        
         listFood = ListManager.sharedInstance.getListFavorite()
     }
 
@@ -24,6 +30,8 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     
     /*
      **  return number cell view (depends on section if there is)
@@ -36,7 +44,7 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
      ** Set a cell view
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! ItemTableViewCell
+        let cell: ItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ListItem", for: indexPath) as! ItemTableViewCell
         
         let itm = listFood[indexPath.row]
 
@@ -57,7 +65,7 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         //ListManager.sharedInstance.setFavoriteToActual(foodList: listFood[indexPath.row].foodlist?.allObjects as! [FoodItem])
-        tabBarController?.selectedIndex = 0
+        //tabBarController?.selectedIndex = 0
     }
     
     /*
@@ -74,6 +82,13 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
             tableView.reloadData()
         }
         
+    }
+    
+    func refreshTable(refreshControl: UIRefreshControl) {
+        listFood = ListManager.sharedInstance.getListFavorite()
+        print(listFood)
+        tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
 

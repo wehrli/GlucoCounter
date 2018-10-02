@@ -19,7 +19,7 @@ extension FoodItemMO {
 
     @NSManaged public var glucidicQuantity: Float
     @NSManaged public var kCalQuantity: Float
-    @NSManaged public var name: String?
+    @NSManaged public var name: String!
     @NSManaged public var weight: Float
     @NSManaged public var foodList: FoodListMO?
 
