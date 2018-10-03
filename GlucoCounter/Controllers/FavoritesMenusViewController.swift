@@ -64,8 +64,8 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
      ** give action on selecting a cell view
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        //ListManager.sharedInstance.setFavoriteToActual(foodList: listFood[indexPath.row].foodlist?.allObjects as! [FoodItem])
-        //tabBarController?.selectedIndex = 0
+        ListManager.sharedInstance.setFavoriteToActual(foodList: listFood[indexPath.row])
+        tabBarController?.selectedIndex = 0
     }
     
     /*
@@ -74,12 +74,12 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-//            ListManager.sharedInstance.removeFoodToFavoriteList(nameList: listFood[indexPath.row].name!)
-//
+            ListManager.sharedInstance.removeFoodToFavoriteList(nameList: listFood[indexPath.row].name!)
+
 //            listFood.removeAll()
 //            listFood = ListManager.sharedInstance.getListFavorite()
-//
-            tableView.reloadData()
+
+//            tableView.reloadData()
         }
         
     }

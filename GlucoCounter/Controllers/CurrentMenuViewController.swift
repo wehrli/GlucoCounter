@@ -113,9 +113,9 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            //ListManager.sharedInstance.removeFoodToActualList(nameFood: items[indexPath.row].title)
-            //self.getItemFromDb()
-            //tableViewObject.reloadData()
+            ListManager.sharedInstance.removeFoodToActualList(nameFood: items[indexPath.row].name)
+            self.getItemFromDb()
+            tableViewObject.reloadData()
         }
  
     }

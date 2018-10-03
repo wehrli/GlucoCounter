@@ -46,13 +46,10 @@ class ListManager {
         //execution of the request
         do {
             favoriteListFood = try DBManager.sharedInstance.getContext().fetch(fetchRequestor) as! [FoodListMO]
-            
         } catch {
             fatalError("Failed to fetch Favorite list: \(error)")
         }
-        print("------------------------------------------")
-        print(favoriteListFood)
-        print("------------------------------------------")
+
         return favoriteListFood
     }
     
@@ -77,41 +74,41 @@ class ListManager {
         DBManager.sharedInstance.Save()
     }
     
-//    public func setFavoriteToActual(foodList: [FoodItem]) {
-//        actualListFood.removeAll()
-//        actualListFood = foodList
-//    }
+    public func setFavoriteToActual(foodList: FoodListMO) {
+        //actualListFood.removeAll()
+        actualListFood = foodList
+    }
     
     public func removeFoodToActualList(nameFood: String) {
-//        var idx = -1
-//        for (index, value) in actualListFood.enumerated() {
-//            if (value.title == nameFood) {
-//                idx = index
-//            }
-//        }
-//        
-//        if (idx != -1) {
-//            actualListFood.remove(at: idx)
-//        } else {
-//            print("food is not in the list")
-//        }
+        var idx = -1
+        var foodListElem = actualListFood.foods?.allObjects as! [FoodItemMO]
+        for (index, value) in foodListElem.enumerated() {
+            if (value.name == nameFood) {
+                idx = index
+            }
+        }
+        
+        if (idx != -1) {
+            DBManager.sharedInstance.getContext().delete(foodListElem[idx])
+        } else {
+            print("food is not in the list")
+        }
         
     }
     
     public func removeFoodToFavoriteList(nameList: String) {
-//        var idx = -1
-//        for (index, value) in favoriteListFood.enumerated() {
-//            if (value.name == nameList) {
-//                idx = index
-//            }
-//        }
-//
-//        if (idx != -1) {
-//            favoriteListFood.remove(at: idx)
-//        } else {
-//            print("food is not in the list")
-//        }
-        
+        var idx = -1
+        for (index, value) in favoriteListFood.enumerated() {
+            if (value.name == nameList) {
+                idx = index
+            }
+        }
+
+        if (idx != -1) {
+            DBManager.sharedInstance.getContext().delete(favoriteListFood[idx])
+        } else {
+            print("food is not in the list")
+        }
     }
     
     class var sharedInstance: ListManager {
