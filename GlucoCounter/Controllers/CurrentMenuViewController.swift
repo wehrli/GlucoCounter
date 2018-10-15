@@ -18,6 +18,7 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableViewObject: UITableView!
     @IBOutlet weak var favoriteButton: UIButton!
     
+    @IBOutlet weak var trashButton: UIBarButtonItem!
     
     @IBOutlet weak var glucidicTotalDisplay: UILabel!
     @IBOutlet weak var kcalTotalDisplay: UILabel!
@@ -31,14 +32,14 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
         ** procedure of erasing value into core data (only FoodList)
         */
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodList")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try DBManager.sharedInstance.getContext().execute(deleteRequest)
-        } catch let error as NSError {
-            // TODO: handle the error
-        }
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodList")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//        
+//        do {
+//            try DBManager.sharedInstance.getContext().execute(deleteRequest)
+//        } catch let error as NSError {
+//            // TODO: handle the error
+//        }
         
         /*
         ** End of procedure
@@ -46,13 +47,12 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
         
         items = []
         
+        trashButton.action = #selector(eraseAllFoodFromCurrentList)
+        
         // This allow the pull to refresh event
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableViewObject.refreshControl = refreshControl
-        
-        // Add target on addToFavorite button
-//        favoriteButton.addTarget(self, action: #selector(putToFavorite), for: .touchUpInside)
         
         //get all food from last used (current or fav)
         self.getItemFromDb()
@@ -100,10 +100,9 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
             let tmp = ListManager.sharedInstance.calculeResultDiabetValues()
             print(tmp)
             
-            //valeur en dur a modifié
-            glucidicTotalDisplay.text = "Apport glucidique total : " + tmp.glucidicQuantity.description
-            kcalTotalDisplay.text = "Apport caloriques total : " + tmp.kCalQuantity.description
-            weightTotalDisplay.text = "Poids Total : " + tmp.totalWeight.description
+            glucidicTotalDisplay.text = "Apport glucidique total : " + String(format: "%.2f", tmp.glucidicQuantity)
+            kcalTotalDisplay.text = "Apport caloriques total : " + String(format: "%.2f", tmp.kCalQuantity)
+            weightTotalDisplay.text = "Poids Total : " + String(format: "%.2f", tmp.totalWeight)
         }
     }
     
@@ -120,20 +119,6 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
  
     }
     
-    /*
-     ** give action on selecting a cell view
-     */
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*if (deviceSort[indexPath.row].getId() != -1) {
-         self.performSegueWithIdentifier("editDeviceSegue", sender: indexPath)
-         }
-        
-        let test: NotificationCenter!
-        test.post(Notification.init(name: Notification.Name(rawValue: "Cailloux !!!!!!")))
-        */
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool){
         self.getItemFromDb()
         tableViewObject.reloadData()
@@ -141,17 +126,24 @@ class CurrentMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     func getItemFromDb() {
         items.removeAll()
+        
+        glucidicTotalDisplay.text = "Apport glucidique total : 0.0"
+        kcalTotalDisplay.text = "Apport caloriques total : 0.0"
+        weightTotalDisplay.text = "Poids Total : 0.0"
+        
         items = ListManager.sharedInstance.getListFood()
     }
     
     func refreshTable(refreshControl: UIRefreshControl) {
-        getItemFromDb()
+        self.getItemFromDb()
         tableViewObject.reloadData()
         refreshControl.endRefreshing()
     }
     
-    func putToFavorite() {
-        
+    func eraseAllFoodFromCurrentList() {
+        ListManager.sharedInstance.cleanActualList()
+        self.getItemFromDb()
+        tableViewObject.reloadData()
     }
 }
 

@@ -62,7 +62,6 @@ class ListManager {
     }
     
     public func addFoodListToFavorite(name: String, diabetValues: ResultDiabetValues) {
-        // TODO:
         let tmpNewList = FoodListMO(context: DBManager.sharedInstance.getContext())
         tmpNewList.isCurrent = false
         tmpNewList.name = name
@@ -93,7 +92,16 @@ class ListManager {
         } else {
             print("food is not in the list")
         }
-        
+        DBManager.sharedInstance.Save()
+    }
+    
+    //parcours de la liste en entier -> pas la meilleure solution
+    public func cleanActualList() {
+        var foodListElem = actualListFood.foods?.allObjects as! [FoodItemMO]
+        for (index, _) in foodListElem.enumerated() {
+            DBManager.sharedInstance.getContext().delete(foodListElem[index])
+        }
+        DBManager.sharedInstance.Save()
     }
     
     public func removeFoodToFavoriteList(nameList: String) {
@@ -109,6 +117,7 @@ class ListManager {
         } else {
             print("food is not in the list")
         }
+        DBManager.sharedInstance.Save()
     }
     
     class var sharedInstance: ListManager {

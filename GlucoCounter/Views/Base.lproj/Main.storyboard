@@ -103,6 +103,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="GlucoCounter" id="Sxj-q5-pFn">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="e9N-Wp-NM0"/>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8FO-60-dZq">
                                             <connections>
                                                 <segue destination="fdV-SL-eYp" kind="presentation" id="Z5X-6h-NDW"/>
@@ -246,12 +247,13 @@
                             <constraint firstItem="xgh-k8-cdT" firstAttribute="trailing" secondItem="lRi-ll-8Zs" secondAttribute="trailingMargin" id="xHj-Jy-3Ob"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Votre menus" id="Xv7-dQ-LmP"/>
+                    <tabBarItem key="tabBarItem" title="Votre menus" image="menu" id="Xv7-dQ-LmP"/>
                     <connections>
                         <outlet property="favoriteButton" destination="RqH-ZN-T4R" id="gtA-XQ-4WJ"/>
                         <outlet property="glucidicTotalDisplay" destination="fax-c7-exr" id="ck3-2h-NLL"/>
                         <outlet property="kcalTotalDisplay" destination="z0V-tm-oPc" id="FaQ-ua-gCt"/>
                         <outlet property="tableViewObject" destination="xgh-k8-cdT" id="hzA-9j-Psi"/>
+                        <outlet property="trashButton" destination="e9N-Wp-NM0" id="ibh-Z9-CSb"/>
                         <outlet property="weightTotalDisplay" destination="aY3-8k-slI" id="Cm5-Yy-VJu"/>
                     </connections>
                 </viewController>
@@ -652,5 +654,6 @@
     <resources>
         <image name="Heart" width="50" height="50"/>
         <image name="food" width="50" height="50"/>
+        <image name="menu" width="30" height="30"/>
     </resources>
 </document>

@@ -26,27 +26,29 @@ class AddFoodViewController: UIViewController {
     }
     
     @IBAction func addFollow(_ sender: UIButton) {
-
-        //print(titleInput.text?.trimmingCharacters(in: .whitespacesAndNewlines))
         
        // get all information about the food selected
         var value = DBManager.sharedInstance.fetchRequestor(fetchRequest: NSFetchRequest<RawFood>(entityName: "RawFood") as! NSFetchRequest<NSFetchRequestResult>, predicate: NSPredicate(format: "food_name_fr == %@", titleInput.text!.trimmingCharacters(in: .whitespacesAndNewlines))) as! [RawFood]
         
-
+        if (quantity.text! == "") {
+            let myAlertController: UIAlertController = UIAlertController(title: "Hey..!", message: "Please add a quantity", preferredStyle: .alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+                //Do Nothing
+            }
+            myAlertController.addAction(cancelAction)
+            self.present(myAlertController, animated: true, completion: nil)
+            return
+        }
         if (value == [])
         {
             let myAlertController: UIAlertController = UIAlertController(title: "Hey..!", message: "No food found", preferredStyle: .alert)
 
             let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-                //Do some stuff
-
-
+                //Do Nothing
             }
             myAlertController.addAction(cancelAction)
-
             self.present(myAlertController, animated: true, completion: nil)
-
-            print("no food founded for that selection")
             return
         }
         

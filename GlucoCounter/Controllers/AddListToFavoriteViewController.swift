@@ -30,8 +30,29 @@ class AddListToFavoriteViewController: UIViewController {
     @IBAction func addListToFavorite(_ sender: UIButton) {
 
         let result = ListManager.sharedInstance.calculeResultDiabetValues()
-        ListManager.sharedInstance.addFoodListToFavorite(name: nameOfTheList.text!, diabetValues: result)
-        dismiss(animated: true, completion: nil)
+        if (nameOfTheList.text == "") {
+            ListManager.sharedInstance.addFoodListToFavorite(name: nameOfTheList.text!, diabetValues: result)
+            
+            let myAlertController: UIAlertController = UIAlertController(title: "Hey..!", message: "Please put a name on the list", preferredStyle: .alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+                //Do Nothing
+            }
+            myAlertController.addAction(cancelAction)
+            self.present(myAlertController, animated: true, completion: nil)
+        } else {
+            ListManager.sharedInstance.addFoodListToFavorite(name: nameOfTheList.text!, diabetValues: result)
+            
+            let myAlertController: UIAlertController = UIAlertController(title: "Hey..!", message: "Your list is added to favorite", preferredStyle: .alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+                //Do Nothing
+            }
+            myAlertController.addAction(cancelAction)
+            self.present(myAlertController, animated: true, completion: nil)
+            
+            dismiss(animated: true, completion: nil)
+        }
     }
 
     /*

@@ -75,18 +75,14 @@ class FavoritesMenusViewController: UIViewController, UITableViewDelegate, UITab
         
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             ListManager.sharedInstance.removeFoodToFavoriteList(nameList: listFood[indexPath.row].name!)
-
-//            listFood.removeAll()
-//            listFood = ListManager.sharedInstance.getListFavorite()
-
-//            tableView.reloadData()
+            listFood = ListManager.sharedInstance.getListFavorite()
+            tableView.reloadData()
         }
         
     }
     
     func refreshTable(refreshControl: UIRefreshControl) {
         listFood = ListManager.sharedInstance.getListFavorite()
-        print(listFood)
         tableView.reloadData()
         refreshControl.endRefreshing()
     }
