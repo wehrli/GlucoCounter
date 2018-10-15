@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FoodItem" representedClassName="FoodItemMO" syncable="YES">
+        <attribute name="glucidicQuantity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kCalQuantity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="foodlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodList" inverseName="foods" inverseEntity="FoodList" syncable="YES"/>
+    </entity>
+    <entity name="FoodList" representedClassName="FoodListMO" syncable="YES">
+        <attribute name="isCurrent" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalglucidic" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="totalkcal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="totalweight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="foodlist" inverseEntity="FoodItem" syncable="YES"/>
+    </entity>
+    <entity name="RawFood" representedClassName="RawFood" syncable="YES" codeGenerationType="class">
+        <attribute name="alcohol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="beta_carotene" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="calcium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="carbohydrate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chloride" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cholesterol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="copper" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fa_mono" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fa_poly" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fa_saturated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fibres" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="food_name_eng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="food_name_fr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iodine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iron" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kcal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kj" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="magnesium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manganese" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organic_acids" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phosphorus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="polyols" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="potassium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="protein" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="retinol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="salt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="selenium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sodium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sugars" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_b12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_c" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_e" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_k1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vitamin_k2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="water" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zinc" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="VersionPlateList" representedClassName="VersionPlateList" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FoodItem" positionX="-905.64453125" positionY="-238.3359375" width="128" height="120"/>
+        <element name="FoodList" positionX="-625.5859375" positionY="-92.64453125" width="128" height="135"/>
+        <element name="RawFood" positionX="27" positionY="126" width="128" height="735"/>
+        <element name="VersionPlateList" positionX="54" positionY="216" width="128" height="75"/>
+    </elements>
+</model>
